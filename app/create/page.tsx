@@ -2,7 +2,7 @@
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 import CreateNote from "../components/CreateNote";
-import RootLayout from "../layout";
+import RootLayout from "./layout";
 
 export default function CreatePage() {
   return (

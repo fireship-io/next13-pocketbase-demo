@@ -4,7 +4,7 @@ import styles from "Notes.module.css";
 import PocketBase from "pocketbase";
 import { use } from "react";
 import Note from "../../components/Note";
-import RootLayout from "../../layout";
+import RootLayout from "./layout";
 
 export async function getNote(noteId: string) {
   const db = new PocketBase("http://127.0.0.1:8090");
