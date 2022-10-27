@@ -1,5 +1,5 @@
-import "globals.css";
-import styles from "Home.module.css";
+import "./globals.css";
+import styles from "./Home.module.css";
 
 export default function RootLayout({
   children,
@@ -15,7 +15,7 @@ export default function RootLayout({
       <body className={styles.container}>
         <main className={styles.main}>
           <nav>
-            <h1 className={styles.title}>{pageTitle}</h1>
+            <h1 className={styles.pageTitle}>{pageTitle}</h1>
             <br />
             {action}
           </nav>

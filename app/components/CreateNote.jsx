@@ -1,6 +1,6 @@
-import styles from "CreateNote.module.css";
 import PocketBase from "pocketbase";
 import { useState } from "react";
+import styles from "./Components.module.css";
 
 export default function CreateNote() {
   const [title, setTitle] = useState("");

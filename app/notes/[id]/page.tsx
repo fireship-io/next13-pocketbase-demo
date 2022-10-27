@@ -1,10 +1,9 @@
 "use client";
 import Link from "next/link";
-import styles from "Notes.module.css";
 import PocketBase from "pocketbase";
 import { use } from "react";
-import Note from "../../components/Note";
 import RootLayout from "./layout";
+import styles from "./Notes.module.css";
 
 export async function getNote(noteId: string) {
   const db = new PocketBase("http://127.0.0.1:8090");
@@ -17,9 +16,14 @@ export async function getNote(noteId: string) {
 }
 
 export default function NotePage({ params }: any) {
-  const id = params.id;
+  const id: string = params.id;
 
   const note = use(getNote(id));
+
+  async function deleteNote() {
+    const db = new PocketBase("http://127.0.0.1:8090");
+    await db.records.delete("notes", `${id}`, {});
+  }
 
   return (
     <RootLayout
@@ -30,7 +34,13 @@ export default function NotePage({ params }: any) {
         </Link>
       }
     >
-      <Note note={note} />
+      <div key={id} className={styles.note}>
+        <h5 className={styles.content}>{note.content}</h5>
+        <p className={styles.created}>{note.created}</p>
+        <button type="button" onClick={deleteNote}>
+          Delete note
+        </button>
+      </div>
     </RootLayout>
   );
 }

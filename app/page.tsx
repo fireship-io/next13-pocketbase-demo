@@ -1,9 +1,9 @@
 "use client";
-import styles from "Home.module.css";
 import Link from "next/link";
 import PocketBase from "pocketbase";
 import { use } from "react";
 import Note from "./components/Note";
+import styles from "./Home.module.css";
 import RootLayout from "./layout";
 
 export async function getNotes() {

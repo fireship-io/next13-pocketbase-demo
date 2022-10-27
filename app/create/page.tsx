@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import styles from "../../styles/Home.module.css";
 import CreateNote from "../components/CreateNote";
+import styles from "./Create.module.css";
 import RootLayout from "./layout";
 
 export default function CreatePage() {
