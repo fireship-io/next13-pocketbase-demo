@@ -1,7 +1,5 @@
-import Link from "next/link";
 import PocketBase from "pocketbase";
 import { use } from "react";
-import RootLayout from "./layout";
 import styles from "./Notes.module.css";
 
 export async function getNote(noteId: string) {
@@ -25,21 +23,13 @@ export default function NotePage({ params }: any) {
   // }
 
   return (
-    <RootLayout
-      pageTitle={note.title}
-      action={
-        <Link href="/" className={styles.action}>
-          👈 Go back
-        </Link>
-      }
-    >
-      <div key={id} className={styles.note}>
-        <h5 className={styles.content}>{note.content}</h5>
-        <p className={styles.created}>{note.created}</p>
-        {/* <button type="button" onClick={deleteNote}>
+    <div key={id} className={styles.note}>
+      <h3 className={styles.pageTitle}>{note.title}</h3>
+      <h5 className={styles.content}>{note.content}</h5>
+      <p className={styles.created}>{note.created}</p>
+      {/* <button type="button" onClick={deleteNote}>
           Delete note
         </button> */}
-      </div>
-    </RootLayout>
+    </div>
   );
 }

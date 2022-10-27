@@ -1,20 +1,12 @@
 "use client";
-import Link from "next/link";
 import CreateNote from "../components/CreateNote";
 import styles from "./Create.module.css";
-import RootLayout from "./layout";
 
 export default function CreatePage() {
   return (
-    <RootLayout
-      pageTitle="Create"
-      action={
-        <Link href="/" className={styles.action}>
-          👈 Go back
-        </Link>
-      }
-    >
+    <>
+      <h1 className={styles.pageTitle}>Create</h1>
       <CreateNote />
-    </RootLayout>
+    </>
   );
 }

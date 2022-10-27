@@ -14,12 +14,7 @@
 .pageTitle {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
-}
-
-.action {
-  text-align: left;
-  color: dodgerblue;
+  font-size: 3rem;
 }
 
 .note {
@@ -42,4 +37,9 @@
 .created {
   font-size: 0.7rem;
   font-weight: lighter;
+}
+
+.action {
+  text-align: left;
+  color: dodgerblue;
 }
