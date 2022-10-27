@@ -1,5 +1,5 @@
-import "../../../styles/globals.css";
-import styles from "../../../styles/Home.module.css";
+import styles from "Notes.module.css";
+import "../../globals.css";
 
 export default function RootLayout({
   children,

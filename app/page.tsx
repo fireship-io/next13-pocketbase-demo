@@ -1,8 +1,8 @@
 "use client";
+import styles from "Home.module.css";
 import Link from "next/link";
 import PocketBase from "pocketbase";
 import { use } from "react";
-import styles from "../styles/Home.module.css";
 import Note from "./components/Note";
 import RootLayout from "./layout";
 

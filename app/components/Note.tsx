@@ -1,7 +1,6 @@
-"use client";
+import styles from "Components.module.css";
 import Link from "next/link";
 import { Record } from "pocketbase";
-import styles from "../../styles/Note.module.css";
 
 export default function Note({ note }: { note: Record }): JSX.Element {
   const { id, title, content, created } = note;
