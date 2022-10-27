@@ -2,12 +2,12 @@ import PocketBase from "pocketbase";
 import { useState } from "react";
 import styles from "./Components.module.css";
 
-export default function CreateNote() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+export default function CreateNote(): JSX.Element {
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
 
-  async function createNote() {
-    const db = new PocketBase("http://127.0.0.1:8090");
+  async function createNote(): Promise<void> {
+    const db: PocketBase = new PocketBase("http://127.0.0.1:8090");
 
     await db.records.create("notes", {
       title,
@@ -15,14 +15,14 @@ export default function CreateNote() {
     });
   }
 
-  const handleCreate = () => {
+  function handleCreate(): void {
     createNote()
       .then(() => alert("Note created!"))
       .finally(() => {
         setTitle("");
         setContent("");
       });
-  };
+  }
 
   return (
     <div className={styles.grid}>

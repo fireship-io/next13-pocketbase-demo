@@ -1,11 +1,11 @@
 "use client";
-import PocketBase from "pocketbase";
+import PocketBase, { Record } from "pocketbase";
 import { use } from "react";
 import Note from "./components/Note";
 import styles from "./Home.module.css";
 
-export async function getNotes() {
-  const db = new PocketBase("http://127.0.0.1:8090");
+export async function getNotes(): Promise<Record[]> {
+  const db: PocketBase = new PocketBase("http://127.0.0.1:8090");
 
   const result = await db.records.getList("notes", 1, 50, {
     filter: 'created >= "2022-01-01 00:00:00"',
@@ -14,8 +14,8 @@ export async function getNotes() {
   return result.items;
 }
 
-export default function HomePage() {
-  const notes = use(getNotes());
+export default function HomePage(): JSX.Element {
+  const notes: Record[] = use(getNotes());
 
   return (
     <>

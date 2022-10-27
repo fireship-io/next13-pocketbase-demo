@@ -1,21 +1,21 @@
-import PocketBase from "pocketbase";
+import PocketBase, { Record } from "pocketbase";
 import { use } from "react";
 import styles from "./Notes.module.css";
 
-export async function getNote(noteId: string) {
-  const db = new PocketBase("http://127.0.0.1:8090");
+export async function getNote(noteId: string): Promise<Record> {
+  const db: PocketBase = new PocketBase("http://127.0.0.1:8090");
 
-  const note = await db.records.getOne("notes", noteId, {
+  const note: Record = await db.records.getOne("notes", noteId, {
     expand: "some_relation",
   });
 
   return note;
 }
 
-export default function NotePage({ params }: any) {
+export default function NotePage({ params }: any): JSX.Element {
   const id: string = params.id;
 
-  const note = use(getNote(id));
+  const note: Record = use(getNote(id));
 
   // async function deleteNote() {
   //   const db = new PocketBase("http://127.0.0.1:8090");
