@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
+    padding: 0 2rem;
 }
 
 a {
@@ -15,4 +16,36 @@ a {
   text-decoration: none;
   padding: 0;
   margin: 0;
+}
+
+main {
+  min-height: 100vh;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+input, textarea { 
+  display: block;
+  max-width: 300px;
+  margin: 0.5rem 0;
+}
+
+button {
+  background-color: #000000;
+  border: none;
+  color: white;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+nav a {
+  font-weight: bold;
+  margin: 0 0.5rem;
+  text-decoration: underline;
 }

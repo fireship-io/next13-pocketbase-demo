@@ -1,5 +1,3 @@
-import Spinner from "../../components/Spinner";
-
-export default function Loading(): JSX.Element {
-  return <Spinner />;
+export default function Loading() {
+  return <p>Loading...</p>
 }

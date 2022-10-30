@@ -1,35 +1,34 @@
-import PocketBase, { Record } from "pocketbase";
-import { use } from "react";
-import styles from "./Notes.module.css";
+import PocketBase from 'pocketbase';
+import styles from '../Notes.module.css';
 
-export async function getNote(noteId: string): Promise<Record> {
-  const db: PocketBase = new PocketBase("http://127.0.0.1:8090");
-
-  const note: Record = await db.records.getOne("notes", noteId, {
-    expand: "some_relation",
-  });
-
-  return note;
+async function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export default function NotePage({ params }: any): JSX.Element {
-  const id: string = params.id;
 
-  const note: Record = use(getNote(id));
+async function getNote(noteId: string) {
+  const res = await fetch(`http://127.0.0.1:8090/api/collections/notes/records/${noteId}`, {
+    next: { revalidate: 10 },
+  });
+  const data = await res.json();
+  await delay(2000);
+  return data;
+}
 
-  // async function deleteNote() {
-  //   const db = new PocketBase("http://127.0.0.1:8090");
-  //   await db.records.delete("notes", id);
-  // }
+
+
+export default async function NotePage({ params }: any) {
+
+  const note = await getNote(params.id);
 
   return (
-    <div key={id} className={styles.note}>
-      <h3 className={styles.pageTitle}>{note.title}</h3>
-      <h5 className={styles.content}>{note.content}</h5>
-      <p className={styles.created}>{note.created}</p>
-      {/* <button type="button" onClick={deleteNote}>
-          Delete note
-        </button> */}
-    </div>
+    <>
+      <h1>notes/{note.id}</h1>
+      <div className={styles.note}>
+        <h3>{note.title}</h3>
+        <h5>{note.content}</h5>
+        <p>{note.created}</p>
+      </div>
+    </>
   );
 }

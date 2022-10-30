@@ -1,5 +1,6 @@
-import "./globals.css";
-import styles from "./Home.module.css";
+/* eslint-disable @next/next/no-head-element */
+import Link from 'next/link';
+import './globals.css';
 
 export default function RootLayout({
   children,
@@ -8,12 +9,15 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={styles.container}>
-        <main className={styles.main}>
+      <body>
+        <main>
           <nav>
-            <a href="/create" className={styles.action}>
-              + Create new note
-            </a>
+            <Link href="/">
+              Home
+            </Link>
+            <Link href="/notes">
+              Notes
+            </Link>
           </nav>
           {children}
         </main>
