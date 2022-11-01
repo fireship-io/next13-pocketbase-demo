@@ -41,7 +41,7 @@ function Note({ note }: any) {
 
   return (
     <Link href={`/notes/${id}`}>
-      <div key={id} className={styles.note}>
+      <div className={styles.note}>
         <h2>{title}</h2>
         <h5>{content}</h5>
         <p>{created}</p>
