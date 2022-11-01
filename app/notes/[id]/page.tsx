@@ -1,24 +1,17 @@
-import PocketBase from 'pocketbase';
 import styles from '../Notes.module.css';
 
-async function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-
 async function getNote(noteId: string) {
-  const res = await fetch(`http://127.0.0.1:8090/api/collections/notes/records/${noteId}`, {
-    next: { revalidate: 10 },
-  });
+  const res = await fetch(
+    `http://127.0.0.1:8090/api/collections/notes/records/${noteId}`,
+    {
+      next: { revalidate: 10 },
+    }
+  );
   const data = await res.json();
-  await delay(2000);
   return data;
 }
 
-
-
 export default async function NotePage({ params }: any) {
-
   const note = await getNote(params.id);
 
   return (
